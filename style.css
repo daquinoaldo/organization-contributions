@@ -1,0 +1,82 @@
+body {
+  text-align: center;
+  font-family: Segoe UI, Helvetica, Arial, sans-serif
+}
+
+.search {
+  border: #c0c0c0 1px solid;
+  border-radius: .3em;
+  padding: .5em;
+  font-size: 1em;
+}
+
+#search_button {
+  background: #fff;
+}
+
+#container {
+  margin-top: 1em;
+  display: flex;
+  flex-wrap: wrap;
+ }
+
+.card {
+  border: #c0c0c0 1px solid;
+  border-radius: .5em;
+  padding: 1em;
+  margin: .5em;
+  flex: 1 0 calc(100% -  1em);
+  box-sizing: border-box;
+}
+
+.card h4 {
+  margin: 0 .5em .5em .5em;
+  font-size: 1.2em;
+}
+
+.card ul {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.author {
+  font-weight: bold;
+}
+
+.commits {
+  color: #586069
+}
+
+.added {
+  color: #28a745
+}
+
+.deleted {
+  color: #cb2431
+}
+
+#main-card {
+  border-width: 2px;
+  margin: .5em auto;
+}
+
+ 
+@media screen and (min-width: 40em) {
+  .card {
+    max-width: calc(50% -  1em);
+  }
+}
+
+@media screen and (min-width: 50em) {
+  .card {
+    max-width: calc(33.3% -  1em);
+  }
+}
+ 
+@media screen and (min-width: 75em) {
+  .card {
+    max-width: calc(25% - 1em);
+  }
+}
