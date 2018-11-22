@@ -40,7 +40,11 @@ function setMessage(message) {
 function compute() {
   const org = search_input.value
   // Append the org query to the url
-  window.history.pushState("", "", window.location.href.split("?")[0]+"?org="+org)
+  let query = "?org="+org
+  console.log(clientSecret)
+  if (clientId && clientSecret)
+    query += "&client_id="+clientId+"&client_secret="+clientSecret
+  window.history.pushState("", "", window.location.href.split("?")[0]+query)
   // Add the loading message in the container
   const loadingMsg = "Loading contributions for "+org+"..."
   console.log(loadingMsg)
@@ -70,6 +74,8 @@ search_input.addEventListener("keyup", (event) => {
 function parseUrl() {
   const url = new URL(window.location.href)
   const org = url.searchParams.get("org")
+  clientId = url.searchParams.get("client_id")
+  clientSecret = url.searchParams.get("client_secret")
   if (org) {
     search_input.value = org
     compute()

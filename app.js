@@ -1,11 +1,17 @@
+let clientId = null
+let clientSecret = null
+
 function httpGetAsync(url) {
+  if (clientId  && clientSecret)
+    url += "?client_id="+clientId+"&client_secret="+clientSecret
   return new Promise((resolve, reject) => {
     const xmlHttp = new XMLHttpRequest()
     xmlHttp.onloadend = () => {
       if (xmlHttp.status == 200)
         resolve(xmlHttp.responseText)
-      else if (xmlHttp.status === 404)
-        reject(404)
+      else {
+        reject(xmlHttp.status)
+      }
     }
     xmlHttp.open("GET", url, true) 
     xmlHttp.send(null)
@@ -95,6 +101,16 @@ function getContributors(org) {
           }
         }))
         Promise.all(promises).then(() => resolve(organization))
-    }).catch(err => reject("Organization "+org+" not found"))
+    }).catch(err => {
+      if (err === 404) reject("Organization "+org+" not found")
+      if (err === 403)
+        reject("Your IP address have reached the GitHub API limit. " +
+          "To perform this action you need an API key. " +
+          "You can obtain an API key creating a new OAuth App here: " +
+          "https://github.com/settings/developers. " +
+          "You can apply your API key as query parameters in the url. " +
+          "e.g /?org=myorg&client_id=xxx&client_secret=yyy.")
+      else reject("Unknown error: HTTP request receives "+err)
+    })
   })
 }
