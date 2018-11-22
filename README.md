@@ -1,6 +1,8 @@
 # GitHub organization contributions
 _A simple dashboard for organization contributions_
 
+Visit the [free online version](https://daquinoaldo.github.io/organization-contributions) without have to deploy your own!
+
 # Use in your project
 [app.js](app.js) is the main file. After having imported it you have access tho this functions:
 - `getRepos(org)` that provides an array containg athe names of all the repository of that organization.
@@ -33,3 +35,10 @@ All this functions return promises resolved with the result.
     ]
 }
 ```
+
+<br>
+
+**Important:** the GitHub API requests limit is pretty low. You can remove the limit using the [GitHub OAuth App](https://github.com/settings/developers).
+
+Create a [new app](https://github.com/settings/applications/new) and edit [app.js](app.js) assigning your `client_id` and `client_secret` values to the variables at the beginning of the file.  
+You can also overwrite this variable after importing the app.js file.
