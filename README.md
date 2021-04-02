@@ -1,7 +1,7 @@
 # GitHub organization contributions
 _A simple dashboard for organization contributions_
 
-Visit the [free online version](https://daquinoaldo.github.io/organization-contributions) without have to deploy your own!
+Visit the [free online version](https://daquinoaldo.github.io/organization-contributions) without having to deploy your own!
 
 # Use in your project
 [app.js](app.js) is the main file. After having imported it you have access tho this functions:
